@@ -292,7 +292,7 @@ export default function HospitalDashboard() {
 
                   {/* Actions */}
                   <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginLeft: 'auto' }}>
-                    {['PENDING', 'ACCEPTED'].includes(req.status) && (
+                    {['PENDING', 'ACCEPTED'].includes(req.status) && req.emergencyLevel !== 'CRITICAL' && (
                       <button
                         onClick={() => handleSOS(req._id)}
                         disabled={sosBusy === req._id}
@@ -301,7 +301,7 @@ export default function HospitalDashboard() {
                           padding: '8px 14px', borderRadius: 8, border: 'none', cursor: 'pointer',
                           background: '#7C0000', color: 'white',
                           fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 12,
-                          animation: (sosBusy !== req._id && req.emergencyLevel !== 'CRITICAL') ? 'sosRing 2s ease infinite' : 'none',
+                          animation: 'sosRing 2s ease infinite',
                           display: 'flex', alignItems: 'center', gap: 4
                         }}
                       >

@@ -22,8 +22,7 @@ A high-performance, real-time interface for managing life-saving blood donations
 
 ### 3. Advanced Connectivity
 - **Socket.io Integration**: Native `io` listeners for instant notifications without page refreshes.
-- **Centralized API Hub**: Integrated `api.js` for seamless transition between local development and production deployments.
-
+- **Centralized API Hub**: Integrated `api.js` for seamless transition between local development and production deployments.4. **SPA Routing Support**: Includes `vercel.json` for proper URL rewrites, preventing 404 errors on page refreshes.
 ## 🛠 Tech Stack
 - **Core**: React 19
 - **Build Tool**: Vite
