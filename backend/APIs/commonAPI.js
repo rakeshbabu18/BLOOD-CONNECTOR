@@ -23,6 +23,12 @@ commonRouter.post("/register", async (req, res, next) => {
             return res.status(400).json({ message: "All required fields must be provided" });
         }
 
+        // Phone number validation (10 digits)
+        const phoneRegex = /^[0-9]{10}$/;
+        if (!phoneRegex.test(phoneNumber)) {
+            return res.status(400).json({ message: "Phone number must be exactly 10 digits" });
+        }
+
         if (!["DONOR", "HOSPITAL"].includes(role)) {
             return res.status(400).json({ message: "Role must be either DONOR or HOSPITAL" });
         }

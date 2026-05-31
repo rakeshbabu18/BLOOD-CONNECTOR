@@ -13,6 +13,7 @@ const inputStyle = {
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const navigate = useNavigate();
@@ -58,11 +59,22 @@ export default function Login() {
                 onFocus={e => e.target.style.borderColor = 'var(--red)'} onBlur={e => e.target.style.borderColor = 'var(--gray-200)'}
                 placeholder="you@example.com" required />
             </div>
-            <div>
+            <div style={{ position: 'relative' }}>
               <label style={{ display: 'block', fontSize: 13, fontWeight: 500, color: 'var(--gray-700)', marginBottom: 6 }}>Password</label>
-              <input type="password" value={password} onChange={e => setPassword(e.target.value)} style={inputStyle}
+              <input type={showPassword ? "text" : "password"} value={password} onChange={e => setPassword(e.target.value)} style={inputStyle}
                 onFocus={e => e.target.style.borderColor = 'var(--red)'} onBlur={e => e.target.style.borderColor = 'var(--gray-200)'}
                 placeholder="••••••••" required />
+              <button 
+                type="button" 
+                onClick={() => setShowPassword(!showPassword)}
+                style={{
+                  position: 'absolute', right: 12, bottom: 9,
+                  background: 'none', border: 'none', cursor: 'pointer',
+                  color: 'var(--gray-400)', fontSize: 18,
+                }}
+              >
+                {showPassword ? '👁️' : '👁️‍🗨️'}
+              </button>
             </div>
             <button type="submit" disabled={loading} style={{
               padding: '12px', borderRadius: 10, border: 'none',

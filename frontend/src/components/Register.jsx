@@ -20,6 +20,7 @@ export default function Register() {
     role: location.state?.role || 'DONOR', bloodGroup: 'O+', lastDonationDate: '',
     longitude: '', latitude: '',
   });
+  const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
     if (location.state?.role) {
@@ -47,6 +48,16 @@ export default function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true); setError('');
+
+    // Phone validation
+    const phoneRegex = /^[0-9]{10}$/;
+    if (!phoneRegex.test(form.phoneNumber)) {
+      setError('Please enter a valid 10-digit phone number');
+      toast.error('Invalid phone number');
+      setLoading(false);
+      return;
+    }
+
     const payload = {
       name: form.name, email: form.email, password: form.password,
       phoneNumber: form.phoneNumber, role: form.role,
@@ -101,9 +112,32 @@ export default function Register() {
               <label style={labelStyle}>{form.role === 'HOSPITAL' ? 'Hospital name' : 'Full name'}</label>
               <input style={inputStyle} value={form.name} onChange={set('name')} placeholder={form.role === 'HOSPITAL' ? 'City General Hospital' : 'Dr. Jane Smith'} required />
             </div>
-            <div><label style={labelStyle}>Email</label><input type="email" style={inputStyle} value={form.email} onChange={set('email')} placeholder="you@example.com" required /></div>
-            <div><label style={labelStyle}>Phone number</label><input type="tel" style={inputStyle} value={form.phoneNumber} onChange={set('phoneNumber')} placeholder="+91 98765 43210" required /></div>
-            <div><label style={labelStyle}>Password</label><input type="password" style={inputStyle} value={form.password} onChange={set('password')} placeholder="Min 6 characters" required /></div>
+            <div>
+              <label style={labelStyle}>Email</label>
+              <input type="email" style={inputStyle} value={form.email} onChange={set('email')} placeholder="you@example.com" required />
+            </div>
+            <div>
+              <label style={labelStyle}>Phone number (10 digits)</label>
+              <input type="tel" maxLength="10" style={inputStyle} value={form.phoneNumber} onChange={e => {
+                const val = e.target.value.replace(/\D/g, '').slice(0, 10);
+                setForm(f => ({ ...f, phoneNumber: val }));
+              }} placeholder="9876543210" required />
+            </div>
+            <div style={{ position: 'relative' }}>
+              <label style={labelStyle}>Password</label>
+              <input type={showPassword ? "text" : "password"} style={inputStyle} value={form.password} onChange={set('password')} placeholder="Min 6 characters" required />
+              <button 
+                type="button" 
+                onClick={() => setShowPassword(!showPassword)}
+                style={{
+                  position: 'absolute', right: 12, bottom: 9,
+                  background: 'none', border: 'none', cursor: 'pointer',
+                  color: 'var(--gray-400)', fontSize: 18,
+                }}
+              >
+                {showPassword ? '👁️' : '👁️‍🗨️'}
+              </button>
+            </div>
 
             {form.role === 'DONOR' && (
               <>
