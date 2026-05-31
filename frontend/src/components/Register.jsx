@@ -124,19 +124,26 @@ export default function Register() {
               }} placeholder="9876543210" required />
             </div>
             <div style={{ position: 'relative' }}>
-              <label style={labelStyle}>Password</label>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
+                <label style={{ ...labelStyle, marginBottom: 0 }}>Password</label>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6, cursor: 'pointer' }} onClick={() => setShowPassword(!showPassword)}>
+                  <span style={{ fontSize: 11, fontWeight: 600, color: showPassword ? 'var(--red)' : 'var(--gray-400)', textTransform: 'uppercase', letterSpacing: '0.02em' }}>
+                    {showPassword ? 'Hide' : 'Show'}
+                  </span>
+                  <div style={{
+                    width: 32, height: 18, borderRadius: 20, background: showPassword ? 'var(--red)' : 'var(--gray-200)',
+                    position: 'relative', transition: 'all 0.2s ease',
+                  }}>
+                    <div style={{
+                      width: 12, height: 12, borderRadius: '50%', background: 'white',
+                      position: 'absolute', top: 3, left: showPassword ? 17 : 3,
+                      transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+                      boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
+                    }} />
+                  </div>
+                </div>
+              </div>
               <input type={showPassword ? "text" : "password"} style={inputStyle} value={form.password} onChange={set('password')} placeholder="Min 6 characters" required />
-              <button 
-                type="button" 
-                onClick={() => setShowPassword(!showPassword)}
-                style={{
-                  position: 'absolute', right: 12, bottom: 9,
-                  background: 'none', border: 'none', cursor: 'pointer',
-                  color: 'var(--gray-400)', fontSize: 18,
-                }}
-              >
-                {showPassword ? '👁️' : '👁️‍🗨️'}
-              </button>
             </div>
 
             {form.role === 'DONOR' && (

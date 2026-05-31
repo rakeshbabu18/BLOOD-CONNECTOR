@@ -60,21 +60,28 @@ export default function Login() {
                 placeholder="you@example.com" required />
             </div>
             <div style={{ position: 'relative' }}>
-              <label style={{ display: 'block', fontSize: 13, fontWeight: 500, color: 'var(--gray-700)', marginBottom: 6 }}>Password</label>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
+                <label style={{ display: 'block', fontSize: 13, fontWeight: 500, color: 'var(--gray-700)', marginBottom: 0 }}>Password</label>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6, cursor: 'pointer' }} onClick={() => setShowPassword(!showPassword)}>
+                  <span style={{ fontSize: 11, fontWeight: 600, color: showPassword ? 'var(--red)' : 'var(--gray-400)', textTransform: 'uppercase', letterSpacing: '0.02em' }}>
+                    {showPassword ? 'Hide' : 'Show'}
+                  </span>
+                  <div style={{
+                    width: 32, height: 18, borderRadius: 20, background: showPassword ? 'var(--red)' : 'var(--gray-200)',
+                    position: 'relative', transition: 'all 0.2s ease',
+                  }}>
+                    <div style={{
+                      width: 12, height: 12, borderRadius: '50%', background: 'white',
+                      position: 'absolute', top: 3, left: showPassword ? 17 : 3,
+                      transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+                      boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
+                    }} />
+                  </div>
+                </div>
+              </div>
               <input type={showPassword ? "text" : "password"} value={password} onChange={e => setPassword(e.target.value)} style={inputStyle}
                 onFocus={e => e.target.style.borderColor = 'var(--red)'} onBlur={e => e.target.style.borderColor = 'var(--gray-200)'}
                 placeholder="••••••••" required />
-              <button 
-                type="button" 
-                onClick={() => setShowPassword(!showPassword)}
-                style={{
-                  position: 'absolute', right: 12, bottom: 9,
-                  background: 'none', border: 'none', cursor: 'pointer',
-                  color: 'var(--gray-400)', fontSize: 18,
-                }}
-              >
-                {showPassword ? '👁️' : '👁️‍🗨️'}
-              </button>
             </div>
             <button type="submit" disabled={loading} style={{
               padding: '12px', borderRadius: 10, border: 'none',
