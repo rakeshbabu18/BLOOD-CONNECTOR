@@ -13,20 +13,28 @@ config();
 
 const app = exp();
 const port = process.env.PORT || 5000;
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://blood-connector.vercel.app",
+  "https://blood-connector-c7ro91yi0-rakeshbabu18s-projects.vercel.app"
+];
 
 // Enable CORS for Express REST API
 app.use(cors({
-    origin: process.env.CLIENT_URL  ,
+    origin: allowedOrigins,
     credentials: true,
 }));
 
 // Wrap express app in a native HTTP server so Socket.io can share it
 const httpServer = createServer(app);
 
+
+
 // Initialise Socket.io on the same HTTP server
+
 const io = new Server(httpServer, {
     cors: {
-        origin: process.env.CLIENT_URL  ,
+        origin: allowedOrigins ,
         methods: ["GET", "POST"],
         credentials: true,
     },
