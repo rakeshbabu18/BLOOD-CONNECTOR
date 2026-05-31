@@ -1,8 +1,8 @@
-# Blood Connector Frontend 🩸
+# Blood Connector Frontend 
 
 A high-performance, real-time interface for managing life-saving blood donations.
 
-## ✨ Features
+##  Features
 
 ### 1. Intuitive Dashboards
 - **Donor Dashboard**: 
@@ -30,12 +30,12 @@ A high-performance, real-time interface for managing life-saving blood donations
 - **Notifications**: React Hot Toast
 - **Styling**: Tailwind CSS & CSS-in-JS
 
-## 📁 Folder Structure
+##  Folder Structure
 - `components/`: UI modules including Dashboards, Login, and Navbar.
 - `api.js`: Centralized endpoint configuration.
 - `index.css`: Global design system and custom animations (e.g., `sosRing`).
 
-## ⚙️ Setup
+##  Setup
 1. `npm install`
 2. Create `.env` with `VITE_API_URL`.
 3. `npm run dev`

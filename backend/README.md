@@ -1,8 +1,8 @@
-# Blood Connector Backend 🩺
+# Blood Connector Backend 
 
 The engine powering real-time blood connectivity, donor matching, and emergency broadcasts.
 
-## 🚀 Key Features
+##  Key Features
 
 ### 1. Robust API Architecture
 - **Donor System**: Profile management, donation history, and custom blood request creation.
@@ -19,20 +19,20 @@ The engine powering real-time blood connectivity, donor matching, and emergency 
 - **Password Hashing**: Secure storage using `bcryptjs`.
 - **Role-Based Access Control (RBAC)**: Strict separation between Hospital and Donor capabilities.
 
-## 🛠 Tech Stack
+##  Tech Stack
 - **Runtime**: Node.js
 - **Framework**: Express.js
 - **Database**: MongoDB (Mongoose ODM)
 - **Real-time**: Socket.io
 - **Communication**: Twilio SMS API
 
-## 📁 Folder Structure
+##  Folder Structure
 - `APIs/`: Route handlers for different entities.
 - `Models/`: Mongoose schemas for Users and Blood Requests.
 - `Middlewares/`: Authentication and security checks.
 - `Services/`: Business logic for SOS and complex auth flows.
 
-## ⚙️ Setup
+##  Setup
 1. `npm install`
 2. Create `.env` from `.env.example`.
 3. `npm start` (or `npm run dev` for nodemon).
