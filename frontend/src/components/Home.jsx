@@ -36,7 +36,7 @@ export default function Home() {
               }}
                 onMouseEnter={e => e.target.style.transform = 'translateY(-2px)'}
                 onMouseLeave={e => e.target.style.transform = 'translateY(0)'}
-              >Go to {role === 'hospital' ? 'Hospital' : 'Donor'} Dashboard</Link>
+              >Go to your dashboard</Link>
             ) : (
               <>
                 <Link to="/register" state={{ role: 'DONOR' }} style={{
