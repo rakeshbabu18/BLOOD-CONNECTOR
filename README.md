@@ -16,7 +16,7 @@ The platform operates on a **proximity-based request system**. When a hospital o
 
  
 
-## 🏗 Setup & Installation
+##  Setup & Installation
 
 ### Backend
 1.  Navigate to `backend/`
