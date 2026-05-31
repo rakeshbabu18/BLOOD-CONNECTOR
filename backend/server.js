@@ -16,7 +16,7 @@ const port = process.env.PORT || 5000;
 
 // Enable CORS for Express REST API
 app.use(cors({
-    origin: process.env.CLIENT_URL || "http://localhost:5173",
+    origin: allowedOrigins,
     credentials: true,
 }));
 
@@ -26,7 +26,7 @@ const httpServer = createServer(app);
 // Initialise Socket.io on the same HTTP server
 const io = new Server(httpServer, {
     cors: {
-        origin: process.env.CLIENT_URL || "http://localhost:5173",
+        origin: allowedOrigins,
         methods: ["GET", "POST"],
         credentials: true,
     },
